@@ -9,17 +9,20 @@
 </head>
 <body>
 
-    <div class="logoContainer">
-       <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png">
-    </div>
+<div class="wrapper indexPage">
+   <div class="mainSection">
+       <div class="logoContainer">
+           <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png">
+        </div>
 
-    <div class="searchContainer">
+        <div class="searchContainer">
+           <form action="search.php" nethod="GET">
+               <input type="text" class="searchBox" name="term" placeholder="Search here..">
+               <input type="submit" class="searchButton" value="Search">
+            </form>
+        </div>
+   </div> 
+</div>
 
-       <form action="search.php" nethod="GET">
-           <input type="text" class="searchBox" name="term" placeholder="Search here..">
-           <input type="submit" class="searchButton" value="Search">
-       </form>
-       
-    </div>
 </body>
 </html> 
