@@ -12,7 +12,7 @@
 <div class="wrapper indexPage">
    <div class="mainSection">
        <div class="logoContainer">
-           <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png">
+           <img src="assets/images/doodleLogo.png">
         </div>
 
         <div class="searchContainer">
