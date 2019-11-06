@@ -177,7 +177,7 @@ function followLinks($url){
     }
 }
 
-$startUrl = "http://www.bbc.com";
+$startUrl = "http://www.dogstrust.org.uk";
 followLinks($startUrl);
 
 ?>
