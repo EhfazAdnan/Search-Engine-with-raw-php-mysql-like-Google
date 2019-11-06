@@ -4,6 +4,7 @@ include("classes/DomDocumentParser.php");
 
 $alreadyCrawled = array();
 $crawling = array();
+$alreadyFoundImages = array();
 
 function linkExists($url) {
     global $con;
@@ -24,6 +25,20 @@ function insertLink($url, $title, $description, $keywords) {
     $query->bindParam(":title",$title);
     $query->bindParam(":description",$description);
     $query->bindParam(":keywords",$keywords);
+
+    return $query->execute();
+}
+
+function insertImage($url, $src, $alt, $title) {
+    global $con;
+
+    $query = $con->prepare("INSERT INTO images(siteUrl, imageUrl, alt, title)
+                            VALUES(:siteUrl, :imageUrl, :alt, :title)");
+
+    $query->bindParam(":siteUrl", $url);
+    $query->bindParam(":imageUrl",$src);
+    $query->bindParam(":alt",$alt);
+    $query->bindParam(":title",$title);
 
     return $query->execute();
 }
@@ -53,6 +68,8 @@ function createLink($src, $url) {
 }
 
 function getDetails($url) {
+
+    global $alreadyFoundImages;
 
     $parser = new DomDocumentParser($url);
 
@@ -96,6 +113,28 @@ function getDetails($url) {
         echo "ERROR: Failed to insert $url<br>";
     }
 
+    $imageArray = $parser->getImages();
+
+    foreach($imageArray as $image) {
+        $src = $image->getAttribute("src");
+        $alt = $image->getAttribute("alt");
+        $title = $image->getAttribute("title");
+
+        if(!$title && !$alt){
+            continue;
+        }
+
+        $src = createLink($src, $url);
+
+        if(!in_array($src, $alreadyFoundImages)){
+            $alreadyFoundImages[] = $src;
+
+            insertImage($url, $src, $alt, $title);
+
+        }
+
+    }
+
     //echo "URL: $url, Title: $title, Description: $description, Keywords: $keywords<br>";
 }
 
@@ -124,7 +163,7 @@ function followLinks($url){
             $crawling[] = $href;
 
             getDetails($href);
-        }else return;
+        }
 
         // echo $href . "<br>";  // echo the whole link
 
