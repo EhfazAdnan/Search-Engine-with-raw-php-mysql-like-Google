@@ -25,6 +25,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Welcome to Doodle</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
 
@@ -42,6 +43,7 @@
            <div class="searchContainer">
                <form action="search.php" method="get">
                    <div class="searchBarContainer">
+                       <input type="hidden" name="type" value="<?php echo $type; ?>">
                        <input type="text" class="searchBox" name="term" value="<?php echo $term; ?>" required>
                        <button class="searchButton">
                           <img src="assets/images/icons/search.png" alt="">
@@ -137,5 +139,6 @@
 
 </div>
 
+<script src="assets/js/script.js"></script>
 </body>
 </html> 
