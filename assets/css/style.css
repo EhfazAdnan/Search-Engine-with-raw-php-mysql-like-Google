@@ -245,6 +245,7 @@ a .pageNumber {
 .gridItem img {
     max-width: 200px;
     min-width: 5px;
+    visibility: hidden;
 }
 
 .gridItem .details {

@@ -25,6 +25,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Welcome to Doodle</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
@@ -83,7 +84,7 @@
             $pageSize = 20;
          }else{
             $resultsProvider = new ImageResultsProvider($con);
-            $pageSize = 50;
+            $pageSize = 30;
          }
 
          $numResults = $resultsProvider->getNumResults($term);
@@ -146,6 +147,9 @@
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <script src="assets/js/script.js"></script>
+
 </body>
 </html> 
