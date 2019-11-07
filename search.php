@@ -14,6 +14,8 @@
     }else{
        $type = "sites";
     }
+
+    $page = isset($_GET["page"]) ? $_GET["page"] : 1;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +42,7 @@
            <div class="searchContainer">
                <form action="search.php" method="get">
                    <div class="searchBarContainer">
-                       <input type="text" class="searchBox" name="term">
+                       <input type="text" class="searchBox" name="term" value="<?php echo $term; ?>">
                        <button class="searchButton">
                           <img src="assets/images/icons/search.png" alt="">
                        </button>
@@ -73,10 +75,12 @@
   <div class="mainResultsSection">
       <?php
          $resultsProvider = new SiteResultsProvider($con);
+         $pageLimit = 20;
+
          $numResults = $resultsProvider->getNumResults($term);
          echo "<p class='resultsCount'>$numResults results found</p>";
 
-         echo $resultsProvider->getResultsHtml(1, 20, $term);
+         echo $resultsProvider->getResultsHtml($page, $pageLimit, $term);
       ?>
   </div>  
 
