@@ -19,7 +19,7 @@
 
         <div class="searchContainer">
            <form action="search.php" nethod="GET">
-               <input type="text" class="searchBox" name="term" placeholder="Search here..">
+               <input type="text" class="searchBox" name="term" placeholder="Search here.." required>
                <input type="submit" class="searchButton" value="Search">
             </form>
         </div>
